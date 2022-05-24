@@ -1,247 +1,993 @@
-<!doctype html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <title>신탁형ISA 재산운용보고서</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/common.css"/>
+	<meta charset="utf-8" />
+	<title>상품 수수료 안내</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" media="print" href="print.css"/>
+	<![endif]-->
+	<style>
+		* {margin: 0;padding: 0;box-sizing: border-box;-moz-box-sizing: border-box;}
+		body{font-size: 8pt;letter-spacing: -1px;}
+		body,div,p,h1,h2,h3,h4,h5,span,small,b,strong,table,tr,td{font-family: 'NanumBarunGothic';letter-spacing: -0.5px;word-break: break-all;}
+
+		/*body,div,p,h1,h2,h3,h4,h5,span,small,b,strong,table,tr,td{font-family: 'Noto Sans KR', sans-serif;}*/
+
+		caption {visibility: hidden;overflow: hidden;width:0;height:0;font-size: 0;}
+
+		.letterSpacing0{letter-spacing: 0 !important;}
+		.letterSpacingM1{letter-spacing: -1.3px !important;}
+		ol{padding-left: 14px;}
+		ul {list-style: none;}
+		.mt3{margin-top: 3px;}
+		.mt4{margin-top: 4px;}
+		.mt0{margin-top: 0 !important;}
+		.mt5{margin-top: 5px;}
+		.mt10{margin-top: 10px;}
+		.mt15{margin-top: 15px;}
+		.mt20{margin-top: 20px;}
+		.mt30{margin-top: 30px;}
+		.mt40{margin-top: 40px;}
+		.mt50{margin-top: 50px;}
+		.mb5{margin-bottom: 5px;}
+		.mb0{margin-bottom: 0 !important;}
+		.mb10{margin-bottom: 10px;}
+		.mb15{margin-bottom: 15px;}
+		.mb20{margin-bottom: 20px;}
+		.ml10 {margin-left:10px;}
+		.ml20 {margin-left:20px;}
+		.ml40 {margin-left:40px;}
+		.mb20{margin-bottom: 20px;}
+		.pt5 {padding-top: 5px !important;}
+		.pb5 {padding-bottom: 5px !important;}
+		.pa5 {padding:5px;}
+		.pa10 {padding:10px;}
+		.pa20 {padding:20px;}
+		.py20 {padding-top:20px;padding-bottom:20px;}
+		.no-margin{margin:0 !important;}
+		.no-margin-top{margin-top:0 !important;}
+		.empty-margin{position:relative;top:0;left:0;height:15px;}
+		.no-padding{padding:0;}
+		.text-right{text-align: right;}
+		.text-center{text-align: center !important;}
+
+		.fs15{font-size: 15px !important;}
+		.colorBlack{color:#000;}
+		.fwNormal{font-weight: normal;}
+
+		.d-flex {display: flex;}
+		.space-around {justify-content: space-around;}
+
+		.text-left {text-align: left;}
+		.text-center {text-align: center;}
+		.text-right {text-align: right;}
+
+		.underline {border-bottom: 1px solid black;}
+
+		.fs10 {font-size: 10px;}
+		.fs11 {font-size: 11px;}
+		.fs12 {font-size: 12px;}
+
+		.cTable {table-layout: fixed; width:100%;border-top:1px solid #aaa;border-bottom:1px solid #aaa; border-collapse: collapse;text-align:center; font-size: 16px; font-weight: bold;}
+		.cTable th, .cTable td{padding:5px 0 3px;}
+		.cTable tr:first-child{border-bottom:1px solid #d2d2d2;}
+		.cTable sup{position: relative;top:1px; font-size: 9px;}
+
+		.mainTitle {font-size:32pt; padding:0; margin:0; color:#293f99;}
+		.mainContent {margin:40px 0; font-size: 19px; line-height: 1.5;}
+
+		.subTitle {margin: 25px 0 5px;}
+		.subTitle.narrow {margin: 20px 0 5px;}
+		.subTitle.wide {margin: 35px 0 5px;}
+		.subpage .contentContainer .subTitle:first-child {margin-top: 0;}
+
+		.titleContainer {clear: both;}
+		.titleContainer > * {float: left;}
+		.titleContainer .subTitle {margin:0 20px 0 0;}
+		.titleContainer span {margin-top: 3px;}
+
+		.clear-both {clear: both;}
+
+		.subContainer {position: relative; padding:35px 22px; width: 100%; /*background-color: #f7f7f7;*/ font-weight: bold;}
+		.subContainer .bg { position: absolute; top: 0;left: 0; width: 100%; height: 100%;background-color: #000;opacity: 0.04;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=4)"; /* IE8을 위한 투명도 설정 */
+			filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=4); /* IE7을 위한 투명도 설정 */
+			z-index: -1; /* .bg 보다 뒤로 보내기 */
+		}
+		.subContainer dt{position: relative; top:0; left:0; padding-left:20px; margin-top:30px; margin-bottom: 20px; font-size:20pt; color:#293f99;}
+		/*.subContainer dt:before{content:''; position: absolute; top:8px; left:0; background: url(https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/bullet.png); width: 9px; height:9px;}*/
+		.subContainer dt:first-child{margin-top:0;}
+		.subContainer dd {position: relative; font-size:19pt; line-height: 1.5; padding-left:20px;}
+
+		.infoContainer {position: relative; top:0; left:0; margin: 40px;}
+		.infoContainer .infoTitle {font-size: 15px;margin-bottom: 15px;}
+		.infoContainer .box {padding:15px 25px; color:#333232; font-size: 11px; line-height: 1.3; background-color: #cfd8e4; width:100%;}
+
+		.box {padding:10px; color:#333232; /*font-size: 11px;*/ line-height: 1.3; width:100%; border: 1px solid #333;}
+		.box .box { padding: 5px;}
+		.box.gray {
+			background-color: #eaeaea;
+		}
+		.box.bluegray { /*background-color: #EDF6FC;*/ background: rgba(237, 246, 252, .5);}
+		.box.doubleLine {border: 1px solid #777;}
+		.box.dense {line-height: 1.2;}
+		.box.double-dense {line-height: 1.15;}
+		.border-dotted {border: 1px dotted #777;}
+		.float-left {clear: both;}
+		.float-left * {float:left;}
+
+		.admin{text-align: center;margin:10px 0 0;}
+		a{color:#888;}
+
+		.subpage {background-color:#fff;position:relative;top:0;left:0;
+            size:A4;
+			/*min-height: 1160px; height:1160px; */
+			/*width: 210mm;
+			min-height: 297mm;
+			height: 297mm;*/
+			z-index:100;
+		}
+
+		.subpage .decoKieunsen {position: absolute; top:90px; right:75px;}
+		.subpage .contentContainer {padding: 1cm 1cm 1cm;}
+
+		.header {position:relative;top:0;left:0;width:100%; height: 72px; background: url(https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/bg_right.gif) repeat-x;}
+
+		.footer {position:absolute; bottom:0; left:0; width:100%; }
+		.footer .con {width:100%; height: 80px;  background-color: #e8e8e8; clear: both; }
+		.footer .con .logoGray{position: relative;top: 30px; left: 120px;width: 30%; float: left;}
+		.footer .con .info{position: relative; top: 16px;padding-left:25px; color:#6d6d6d; font-size: 11px; line-height: 16px; float: right; width: 70%;}
+		.float-clear { clear: both;}
+
+		.logoImg{position: absolute; top:25px; left:25px; width: 150px;margin-left:auto;}
+
+		.watermark {position:absolute;top:0;left:0;width:100%;height:100%;background: url(https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/watermark.jpg) no-repeat center center;background-size: 18cm; z-index: -1;}
+
+		ul.dia > li:before {content: '◈';position: absolute;top:0;left:0;}
+		ul.dia > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 10px;}
+		ul.dia > li:last-child {margin-bottom: 0;}
+
+		ul.dash > li:before {content: '-';position: absolute;top:0;left:0;}
+		ul.dash > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 10px;}
+		ul.dash > li:last-child {margin-bottom: 0;}
+
+		ul.square > li:before {content: '□';position: absolute;top:0;left:0;}
+		ul.square > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 15px;}
+		ul.square > li:last-child {margin-bottom: 0;}
+
+		ul.square > li > p:first-child,
+		ul.square > li > span:first-child {margin-bottom: 5px;font-size: 15px;}
+
+		ul.dia > li:before {content: '◇';position: absolute;top:0;left:0;}
+		ul.dia > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 15px;}
+		ul.dia > li:last-child {margin-bottom: 0;}
+
+		ul.circle > li:before {content: 'ㅇ';position: absolute;top:0;left:0;}
+		ul.circle > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 10px;}
+		ul.circle > li:last-child {margin-bottom: 0;}
+
+		ul li > span {display:inline-block; margin-bottom: 5px;}
+		ul li {font-size: 11pt;margin-bottom: 10px;}
+		ul li:last-child {margin-bottom: 0;}
+
+		ul {margin-bottom: 20px;}
+		ul:last-child {margin-bottom: 0;}
+
+		ul.qna {}
+		ul.qna .question {font-weight: bold; margin-bottom: 5px}
+		ul.qna .answer {position: relative;top:0;left:0;padding-left:23px; margin-bottom: 20px;}
+		ul.qna .answer u {font-weight: bold;}
+		ul.qna .answer:before {content:'→'; position: absolute;top:0; left:0;}
+
+		ul.check-list {display:inline-block; position: relative;top:0;left:0;}
+		ul.check-list li{position: relative;top:0;left:0;padding-left:15px;}
+		ul.check-list li:before {content:''; position:absolute;top:5px;left:0;width:10px;height: 10px;margin-right:3px;border: 1px solid #555;}
+		ul.check-list li.check:after {content:'v'; position:absolute;top:-1px;left:2px;}
+		ul.check-list.d-inline li {display:inline-block; margin-right: 10px;}
+
+		ul.fs12.check-list li.check:after {top:1px;left:3px;}
+
+		ul.caution > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 10px;}
+		ul.caution > li:before {content: '\203B';position: absolute;top:0;left:0;}
+		ul.caution > li:last-child {margin-bottom: 0;}
+		ul.caution > li > ol > li {margin-bottom:5px;}
+
+		ul.caution.has-ol {padding-left: 0;}
+		ul.caution.has-ol > li {display: flex;text-indent: 0 !important;}
+
+		ul.finger > li {position: relative;top:0;left:0;padding-left: 17px;text-indent: 0;margin-bottom: 10px;}
+		ul.finger > li:before {content: '\261E';position: absolute;top:0;left:0;}
+		ul.finger > li:last-child {margin-bottom: 0;}
+
+		ul.dot {padding-left: 9px !important;}
+		ul.dot > li {text-indent: -9px !important;}
+		ul.dot > li:before {content:'\00B7';padding-right: 5px;}
+
+		ul.check {margin-top: 0;}
+		ul.check > li:before {content:'\2713';padding-right: 5px;}
+		ul.check li {display: flex;align-items: center;font-size: .8rem;margin-bottom:7px;padding-bottom:7px;border-bottom: 1px dashed #fff; }
+		ul.check li:last-child {border-bottom: 0 none;margin-bottom:0;padding-bottom:0;}
+		ul.check li .btn {margin-left:auto;font-size: .8rem;}
+
+		ul.exam {list-style: none; margin-top:20px; padding-left: 40px;}
+		ul.exam > li {text-indent: -42px;}
+		ul.exam > li:before {content:'(예시) ';font-weight:bold; padding-right: 5px;text-indent: -16px;}
+
+		ul.dense > li, ol.dense > li {margin: 0;}
+		ul.narrow > li, ol.narrow > li {margin-bottom: 5px;}
+		ul.wide > li, ol.wide > li {margin-bottom: 30px;}
+
+		ul.fs10 > li, ol.fs10 > li {font-size: 10px;}
+		ul.fs11 > li, ol.fs11 > li {font-size: 11px;}
+		ul.fs12 > li, ol.fs12 > li {font-size: 12px;}
+		ul.text-left li {text-align: left;}
+
+		ul li u {font-weight: bold;}
+
+		.list-title {margin-bottom: 5px;}
+
+		p.caution {margin-top: 10px;}
+		.divide {border:0 none; width: 100%;height: 1px; background-color: #cccccc; margin: 10px 0 ;}
+
+		.customTable {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 5px;
+		}
+		.customTable th, .customTable td {
+			word-break: break-all;
+			text-align: center;
+			border: 1px solid #333;
+			padding: 3px 5px;
+			font-size: 10pt;
+		}
+		.customTable th {
+			text-align: center;
+			background: rgba(0,0,0,.1);
+		}
+		.customTable td {
+			background-color: #fff;
+		}
+		.customTable.text-left td {
+			text-align: left;
+		}
+		.customTable.ml40 {
+			width: calc(100% - 40px);
+		}
+
+		.bottom-dotted {
+			border-bottom: 1px dashed #999;
+		}
+
+		@page {size: A4; margin:0; padding:0; border-bottom: 10px solid #22569e;border-bottom: 20px solid #22569e;}
+		@media print {
+			body{size: A4; background-color: transparent;-webkit-print-color-adjust: exact; }
+
+			.page-divide {page-break-after: always;}
+			table, figure, .subpage {page-break-inside: avoid;}
+			.no-print-page {display: none;}
+			.page {border: 0;border-radius: 0;width: inherit;min-height: inherit;box-shadow: inherit;background: #fff;page-break-after: always;}
+		}
+	</style>
 </head>
 
 
-<body class="bgcolor-white">
+<body>
 
-<header class="header-isa">
-    <img class="header-line" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/bg-line.jpg" />
-    <img class="logo-isa " src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/logo-isa.jpg" />
-</header>
+<div class="page">
+	<div class="subpage"><div class="header">
+		<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" /><p class="text-right">준법감시인 심의필: 제2021-4805호(2021.11.19) 유효기간(2022.11.18)</p></div>
+		<div class="watermark"></div><div class="contentContainer"><h1 class="mainTitle">장기카드대출(카드론) 설명서</h1>
+			<img class="decoKieunsen" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/kieunsen.png" style="top:105px;" width="60"/>
+			<div class="box gray mt10">
+				<ul class="dia">
+					<li><strong>이 설명서는 「금융소비자 보호에 관한 법률」 제19조제1항, 동 법 시행령 제14조제1항에 따라 금융상품에 관한 중요한 사항을 금융소비자(이하 “고객”)가 이해하기 쉽도록 설명하기 위한 중요 서류로,</strong> 금융소비자 보호에 관한 법령 및 내부통제기준에 따른 절차를 거쳐 제공됩니다.</li>
+					<li>아래 <strong>설명내용을 제대로 이해하지 못한 상태</strong>에서 설명을 이해했다는 <strong>서명을 하거나 녹취기록을 남기시는 경우</strong>, 추후 해당내용과 관련한 <strong>권리구제가 어려울 수 있습니다.</strong></li>
+				</ul>
+			</div>
+			<h2 class="mt30 mb15 text-center"><strong>- 고객님께서는 상품 가입 前 아래 사항을 반드시 확인·숙지하여 주시기 바랍니다 -</strong></h2>
+			<div class="box bluegray doubleLine">
+				<ul class="square">
+					<li>
+						<p class="list-title"><strong>유사 금융상품과 구별되는 특징</strong></p>
+						<ul class="circle">
+							<li><span><strong>본 대출상품은 ‘장기카드대출(카드론)’ 상품입니다. 카드론은 카드를 보유한 고객의 카드사용실적과 신용도를 판단하여, 최대 얼마를 빌려줄 수 있는지가 결정되는 대출입니다.</strong> 카드론을 사용하여 돈을 빌리기 위해서는 반드시 고객이 카드론 이용에 동의하는 절차가 필요합니다.</span></li>
+							<li><span>장기카드대출(카드론)은 신용카드 이용한도 내 최대 40%의 한도가 부여되는 현금서비스와 이용한도 및 상환방식에 차이가 있습니다.</span>
+								<table class="customTable">
+									<thead>
+									<tr>
+										<th scope="col">구분</th><th scope="col">카드론</th><th scope="col">현금서비스</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>대상</td><td>신용카드 회원</td><td>신용카드 회원</td>
+									</tr>
+									<tr>
+										<td>대출기간</td><td>최대 36개월</td><td>최대 1개월</td>
+									</tr>
+									<tr>
+										<td>금리</td><td>3.8% ~ 18.8%</td><td>6.0% ~ 19.9%</td>
+									</tr>
+									<tr>
+										<td>이용한도</td><td>최대 3천만원 이내</td><td>신용카드 이용한도 내 최대 40% 부여</td>
+									</tr>
+									<tr>
+										<td>상환방식</td><td>원리금·원금균등분할상환</td><td>신용카드 이용대금 결제일에 일시상환</td>
+									</tr>
+									</tbody>
+								</table>
+								<p class="caution">※ 대출한도와 금리는 신용도 및 이용실적에 따라 차등 적용</p>
+							</li>
+						</ul>
+					</li>
+					<li class="mt20">
+                        <span class="list-title"><strong>민원‧상담이 빈번하여 숙지가 필요한 사항</strong>
+                        <br/><small>※자세한 내용은 약관, 약정서 및 신청서 등을 확인해주시기 바랍니다.</small></span>
+						<ul class="qna">
+							<li><p class="question">Q1. 카드론 금리는 어떻게 결정되나요?</p>
+								<p class="answer">고객에게 적용되는 <u>대출금리</u>는 <u>기준금리에 프로모션 등에 의한 조정금리 등을 반영하여 적용</u>합니다. 결정된 대출금리는 <u>대출만기일까지 변동없이 동일하게 적용</u>됩니다.</p>
+							</li>
+							<li>
+								<p class="question">Q2. 대출원금과 이자상환 방식은 어떻게 되나요?</p>
+								<p class="answer">대출원금과 이자는 <u>일정주기(매월 등)마다 상환</u>하여야 합니다. 선택 가능한 <u>상환방식은 원리금균등분할상환, 원금균등분할상환</u> 등이 있습니다.</p>
+							</li>
+							<li>
+								<p class="question">Q3. 대출과 관련하여 소비자가 행사할 수 있는 권리에는 무엇이 있나요?</p>
+								<p class="answer">고객은 <u>금리인하요구권과 위법계약해지권을 행사</u>할 수 있으나, 이러한 권리행사에는 <u>일정한 요건</u>이 있습니다.</p>
+							</li>
+							<li>
+								<p class="question">Q4. 대출계약 체결 후 철회는 언제까지 가능한가요?</p>
+								<p class="answer mb0">고객은 계약체결일 또는 계약서류를 제공받은 날로부터 <u>‘14일 이내’ 계약에 대한 청약(대출계약)을 철회할 수 있습니다.</u> 이러한 권리 행사에는 <u>일정한 요건</u>이 있습니다. </p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header">
+			<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<div class="box bluegray doubleLine dense">
+				<ul class="square">
+					<li>
+						<p><strong>신용카드 이용대금 연체 시 발생하는 불이익</strong></p>
+						<ul class="qna">
+							<li><p class="question">Q. 대출금을 연체할 경우 어떤 불이익이 발생하나요?</p>
+								<div class="answer">
+									<u>대출원리금 연체 시에는 법에서 정하는 범위 내에서 원리금에 연체이자율이 적용</u>되며, <u>금융거래가 제약되고 신용점수 등이 하락</u>할 수 있으니 유의하여 주시기 바랍니다.
+									<div class="box mt5">
+										<ul class="exam mt0 mb5">
+											<li>대출원금 3천만원을 1개월 이상 연체 시 연체이자율이 8%인 경우 연체이자 20만원을 납부하여야 합니다. *연체이자 : 20만원(=3천만원×8%×1/12)</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<p><strong>민원을 제기하거나 상담을 요청하려는 경우 이용 가능한 연락처</strong></p>
+						<ul class="qna">
+							<li><p class="question">Q. 대출과 관련하여 궁금한 점이나 민원사항이 있는 경우 어떻게 하면 되나요?</p>
+								<p class="answer mb0">당사 고객센터(☎1566-2566)를 통해 금융상품에 관한 문의가 가능하며, 분쟁 발생 시에는 금융감독원(국번없이 ☎1332) 등에 도움을 요청하실 수 있습니다.</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle">1. 상품 개요 및 특성</h2>
+			<table class="customTable">
+				<colgroup>
+					<col width="20%" /><col width="30%" /><col width="20%" /><col width="30%" />
+				</colgroup>
+				<tr>
+					<th scope="row">상  품  명</th><td th:text="${data1}"></td><th scope="row">대출금액</th><td th:text="${data1 + '원'}"></td>
+				</tr>
+				<tr>
+					<th scope="row">적용금리</th><td th:text="${data3 + '%'}"></td><th scope="row">대출기간/거치기간</th><td th:text="${data4 + '개월/' + data5} + '개월'"></td>
+				</tr>
+				<tr>
+					<th scope="row">금리적용방식</th>
+					<td>
+						<ul class="check-list d-inline fs12">
+							<li id="change" class="check" th:text="${'변동' + data6}"></li><li id="fix" class="check">고정</li><li id="mix" class="check">혼합</li>
+						</ul>
+					</td>
+					<th scope="row">대출실행/만기일</th>
+					<td th:text="${data7 + '~' + data8}"></td>
+				</tr>
+				<tr>
+					<th scope="row">중도상환수수료<br/>부과 여부 및 요율</th>
+					<td>
+						<ul class="check-list d-inline fs12">
+							<li id="target" class="check" th:text="${'대상' + data9}"></li>
+							<li id="ntarget" class="check">비대상</li>
+						</ul>
+					</td>
+					<th scope="row">상환방식</th>
+					<td>
+						<ul class="check-list text-left dense fs12">
+							<li id= "eRpay" class="check" th:text="${'원리금균등분할상환' + data10}"></li>
+							<li id="eApay" class="check">원금균등분할상환</li>
+							<li id="eDpay" class="check">거치후 원금균등분할상환</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<div class="box bluegray mt10 pt5 pb5">
+				<ul class="square">
+					<li>본 대출상품은 ‘분할상환’ 방식만 가능한 상품입니다. <u>매월 원리금을 상환</u>해야 하므로, 매월 이자만 납부하고 만기일에 대출금을 전액상환하는 <u>만기일시상환 상품보다 매월 납부금액이 많습니다.</u></li>
+				</ul>
+			</div>
+			<h2 class="subTitle">2. 금리의 변동 및 산출근거</h2>
+			<div class="box bluegray dense">
+				<ul class="square">
+					<li><span>금리의 변동 유무</span>
+						<ul class="circle dense mt0">
+							<li>돈을 빌리는 시점에 기준금리에 조정금리를 반영하여 약정금리가 결정됩니다. 약정금리는 실제 고객이 지불하는 이자율이며, 대출만기일까지 변동 없이 동일하게 적용됩니다.</li>
+							<li>다만, 대출만기일 이전 국가경제‧금융사정의 급격한 변동 등으로 계약 당시에 예상할 수 없는 현저한 사정변경이 발생한 경우, 카드사는 고객에게 개별 통지하여 약정금리를 변경할 수 있습니다.</li>
+						</ul>
+					</li>
+					<li>
+						<span>금리의 산출근거</span>
+						<ul class="circle dense mb10">
+							<li>대출금리는 원가요소와 마진(목표이익률)을 반영하여 결정됩니다.</li>
+							<li>원가요소는 신용원가, 업무원가, 조달원가 및 자본원가 등으로 구분하여 카드사가 합리적인 기준에 따라 체계적으로 산정하며, 기준금리는 이러한 원가요소에 목표이익률을 감안하여 산정합니다.</li>
+						</ul>
+						<div class="box">
+							<p><strong>(참고) 금리의 산출요소</strong></p>
+							<ul class="dot dense">
+								<li>
+									<strong>신용원가</strong> : 고객의 신용도에 따라 과거 경험과 현재의 시장상황을 고려할 때 예상되는 손실과 향후 예상치 못하게 발생할 수 있는 잠재적 손실 가능성을 고려한 비용을 의미합니다.
+									<br/><small>* 고객의 신용도가 연체 발생 또는 대출금 증가 등으로 악화되는 경우 예상손실 증가에 따른 신용원가 상승으로 대출금리 상승 가능</small>
+								</li>
+								<li><strong>업무원가</strong> : 인건비, 제세공과금 등 업무수행에 수반해서 발생하는 운영 및 영업 관련비용을 의미합니다.</li>
+								<li><strong>조달원가</strong> : 카드사의 자금조달에 소요되는 비용을 의미하며, 자금조달수단별 금리, 대출계약별 만기 등을 감안하여 산정합니다.</li>
+								<li><strong>자본원가</strong> : 예상치 못한 손실에 대비하여 보유해야 하는 필요자본의 기회비용 등을 의미하며, 신용등급 또는 개인신용평점별로 구분된 신용위험자본율과 과거 경험치 등을 반영한 자기자본조달비용 등을 감안하여 산정됩니다. </li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header">
+			<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<div class="titleContainer">
+				<h2 class="subTitle">3. 금리인하요구권</h2>
+				<p class="fs12 mt4">금리인하요구권 대상여부</p>
+				<ul class="check-list d-inline fs12 mt4 ml10 mb0">
+					<li id="yTar" class="check" th:text="${'대상' + data11}"></li><li id="nTar" class="check">비대상</li>
+				</ul>
+				<div class="clear-both"></div>
+			</div>
+			<div class="box bluegray clear-both">
+				<ul class="square wide">
+					<li>채무자인 고객은 <u>본인의 신용상태가 개선되었다고 판단되는 경우(예 : 소득ㆍ재산증가, 개인신용평점 상승 등) 금융회사에 금리인하를 요구</u>할 수 있습니다.</li>
+					<li><p>신청요건</p>
+						<table class="customTable text-left">
+							<colgroup>
+								<col width="150px" />
+								<col width="*" />
+							</colgroup>
+							<tr>
+								<th scope="row">소득ㆍ재산증가</th>
+								<td>
+									<ul class="dot">
+										<li>소득이 증가(취업,승진,이직,전문자격 취득 등)하였거나, 재산증가(자산증가,부채감소) 등 개인의 재무 상태가 개선된 것으로 판단되는 경우</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">개인신용평점 상승</th>
+								<td>
+									<ul class="dot"><li>신용평점(등급)상승 등 신용등급이 상승하거나 기타 본인의 신용도가 상승하였다고 판단되는 경우</li></ul>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">기타</th>
+								<td>
+									<ul class="dot"><li>상기사항 이외에 기타 차주가 신용상태 개선으로 판단하는 사항</li></ul>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li><p>신청방법</p>
+						<table class="customTable">
+							<colgroup>
+								<col width="14%" /><col width="18%" /><col width="23%" /><col width="23%" /><col width="22%" />
+							</colgroup>
+							<tr>
+								<th scope="row">신청방법</th>
+								<th scope="col">영업점</th>
+								<th scope="col">인터넷뱅킹</th>
+								<th scope="col">모바일뱅킹</th>
+								<th scope="col">고객센터</th>
+							</tr>
+							<tr>
+								<th scope="row">신청경로</th>
+								<td>전국 영업점 방문<br/>(신분증 지참)</td>
+								<td>카드 > 카드금융 > i-ONE 장기카드대출(카드론) > 금리인하요구권</td>
+								<td>카드 > 금융 > 장기카드대출(카드론) > 금리인하요구권</td>
+								<td>☎1566-2566 > 6 > 2 > 0 (상담원연결)</td>
+							</tr>
+						</table>
+					</li>
+					<li>금융회사는 금리인하를 요구하는 고객에게 신용상태 개선을 확인하는데 필요한 자료의 제출을 요구할 수 있으며, 신용상태의 개선이 경미하여 금리인하 요구 인정 요건을 충족하지 못하는 경우 등 <strong>심사 결과에 따라 고객의 금리인하 요구는 수용되지 않을 수 있습니다.</strong></li>
+					<li>금융회사는 <strong>금리인하 요구를 받은 날부터 ‘10영업일 이내’</strong>(고객에게 자료의 보완을 요구하는 날부터 자료가 제출되는 날까지의 기간은 포함되지 않습니다)에 <strong>금리인하 요구 수용 여부 및 그 사유를 고객에게 통지</strong>합니다.</li>
+				</ul>
+				<ul class="caution">
+					<li><p>유의사항</p>
+						<ul class="circle dense">
+							<li>신용상태 개선이 금리 산정에 영향을 주지 않는 경우 금리인하요구가 수용되지 않을 수 있습니다.</li><li>신용상태 개선이 있는 경우 신청횟수, 신청시점에 관계없이 금리인하요구 가능합니다.</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle wide">4. 수수료 등 비용부담</h2>
+			<div class="box bluegray">
+				<ul class="square">
+					<li>대출계약을 체결하는 경우 고객이 부담하여야 하는 총 금액에는 대출원리금, 수수료 등이 포함됩니다. 상세한 금액의 합계는 대출심사 후에 확인 가능하므로, 심사 후 별도 안내드리겠습니다.</li>
+					<li>중도상환해약금 없습니다.</li>
+				</ul>
+			</div>
+			<h2 class="subTitle wide">5. 이자 납입방법</h2>
+			<div class="box bluegray">
+				<ul class="square">
+					<li>
+						<p><strong>이자의 납입</strong></p>
+						<ul class="circle">
+							<li>고객님께서는 이자납입일을 정하여, 일정주기(매월 등) 마다 이자를 납입하셔야 합니다. 선택 가능한 납입방법 및 상환방식은 아래와 같습니다.</li><li>납입일이 휴일인 경우, 익영업일로 자동으로 납부가 이월되며, 해당 기간만큼의 이자가 가산됩니다.</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header">
+			<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<div class="box bluegray">
+				<ul class="square wide">
+					<li><p><strong>상환방법에 따른 상환금액‧이자율‧시기(대출실행일 및 결제일에 따라 실제 납입금액이 다를 수 있음)</strong></p>
+						<ul class="circle wide mt10">
+							<li>
+								<p>고객이 원리금균등분할상환을 선택한 경우</p>
+								<strong>(예시) 대출금액 1천만원, 금리 10%, 대출기간 24개월, 대출실행일 2021-09-15, 결제일1일</strong>
+								<table class="customTable">
+									<thead>
+									<tr>
+										<th scope="col">상환방식</th><th scope="col">총 원리금 부담 예상액</th><th scope="col">월 원리금 상환 예상액</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>원리금균등분할상환</td><td>11,118,611원</td><td>505,284~461,449원(원리금)</td>
+									</tr>
+									</tbody>
+								</table>
+							</li>
+							<li>
+								<p>고객이 원금균등분할상환을 선택한 경우</p>
+								<strong>(예시) 대출금액 1천만원, 금리 10%, 대출기간 24개월, 대출실행일 2021-09-15, 결제일1일</strong>
+								<table class="customTable">
+									<thead>
+									<tr>
+										<th scope="col">상환방식</th><th scope="col">총 원리금 부담 예상액</th><th scope="col">월 원리금 상환 예상액</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>원금균등분할상환</td><td>11,087,427원</td><td>545,449~420,204원(원리금)</td>
+									</tr>
+									</tbody>
+								</table>
+							</li>
+							<li>
+								<p>고객이 거치후 원금균등분할상환을 선택한 경우</p>
+								<strong>(예시) 대출금액 1천만원, 금리 10%, 대출기간 24개월(거치3개월), 대출실행일 2021-09-15, 결제일1일</strong>
+								<table class="customTable">
+									<thead>
+									<tr>
+										<th scope="col">상환방식</th><th scope="col">총 원리금 부담 예상액</th><th scope="col">월 원리금 상환 예상액</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>거치후 원금균등분할상환</td>
+										<td>11,337,313원</td>
+										<td>1회~3회 128,767~90,410원 (이자)<br/>4회~27회 501,613~420,318원 (원리금)
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</li>
+					<li class="mt40">
+						<p><strong>주요 상환방법에 따른 특성 비교</strong></p>
+						<table class="customTable text-left mb10">
+							<colgroup>
+								<col width="12%" /><col width="44%" /><col width="44%" />
+							</colgroup>
+							<thead>
+							<tr><th>상환방법</th><th>원리금 균등상환</th><th>원금 균등상환</th></tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th>특징</th>
+								<td>
+									<div class="bottom-dotted text-center"><img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/eqrepayPI.png" width="280" />
+									</div>
+									<div class="pa10">
+										<p><strong>대출원금과 이자를 매월<br/>동일한 금액으로 갚아가는 방식</strong></p>매월 납입하시는 상환 금액이 동일하며, 이중 대출원금에 대한 상환금액이 높아지게 됩니다.
+									</div>
+								</td>
+								<td>
+									<div class="bottom-dotted text-center"><img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/eqrepayP.png" width="280" />
+									</div>
+									<div class="pa10">
+										<p><strong>매월 대출원금을<br/>동일한 금액으로 갚아가는 방식</strong></p>남은 대출원금에 대해 이자가계산되어, 매월 납입하시는 상환 금액이 낮아지게 됩니다.
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>거치기간<br/>선택</th>
+								<td colspan="2">
+									<div class="pa10">
+										<strong th:text="${'<거치식 대출을 선택하시는 경우>'}"></strong>
+										<br/>거치기간(예:2/3개월) 동안에는 이자만 납입을 하고, 거치기간이 종료되면 이자와 원금을 함께 납입을 하셔야 합니다. 대출이 실행된 후에는 거치기간의 추가연장은 어렵습니다. 대출상품 종류에 따라 거치식은 선택이 불가할 수 있음을 유의하여 주시기 바랍니다.
+										<p class="mt10">※ <u>'거치식 대출'의 거치기간 종료 시 상환 부담</u></p>
+										<p class="pl20">거치기간이 종료되면 거치기간 연장이 어려울 수 있으며, 분할상환이 시작되어 이자와 함께 원금도 갚아나가야 하므로 상환 부담이 증가할 수 있습니다.</p>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header">
+			<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<h2 class="subTitle">6. 연체이자율(지연배상금률)</h2>
+			<div class="box bluegray">
+				<ul class="square wide">
+					<li>
+						<span>연체이자율은 [대출이자율 + 연체가산이자율]로 적용합니다.</span>
+						<ul class="circle">
+							<li><u>연체가산이자율은 연3%이며, 연체이자율은 최고 연20%</u>로 합니다.</li>
+						</ul>
+					</li>
+					<li><span>연체이자(지연배상금)를 납입하셔야 하는 경우</span>
+						<ul class="circle wide">
+							<li>
+								<strong>기타 신용카드 개인회원 표준약관 제29조, 은행여신거래기본약관 제7조에서 정한 대출기한 전의 채무변제의무 사유에 해당되어 기한의 이익이 상실된 때</strong>
+								<ul class="finger">
+									<li>기한의 이익이 상실되었다는 것은 그 다음날부터 대출원금에 대한 연체이자를 납입하셔야 합니다.</li>
+								</ul>
+							</li>
+							<li><strong>「이자를 납입하기로 약정한 날」에 납입하지 아니한 때</strong>
+								<ul class="finger">
+									<li>이자를 납입하여야 할 날의 다음날부터 1개월까지는 내셔야 할 약정이자에 대해 연체이자가 적용되고, 1개월이 경과하면 대출원금에 연체이율을 곱한 연체 이자를 납입하셔야 합니다.</li>
+								</ul>
+								<ul class="exam mb5">
+									<li>원금 4천만원, 약정이자율 연 6%, 연체가산이자율은 연 3%인 대출의 이자(20만원)를 미납하여 연체가 발생하고, 연체발생 후 2개월 시점에 납부할 경우 연체이자</li>
+								</ul>
+								<table class="customTable mb5 ml40">
+									<colgroup>
+										<col width="25%" /><col width="55%" /><col width="20%" />
+									</colgroup>
+									<thead>
+									<tr>
+										<th scope="row">연체기간</th><th scope="row">연체이자 계산방법</th><th scope="row">연체이자</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>연체발생 ~ 1개월분</td><td>지체된 약정이자(20만원) × 연9%(6%+3%) × 1/12</td><td>1,500원</td>
+									</tr>
+									<tr>
+										<td>연체 1개월 ~ 2개월분</td><td>원금(4천만원) × 연9%(6%+3%) × 1/12</td><td>300,000원</td>
+									</tr>
+									<tr>
+										<td>계</td><td></td><td>301,500원</td>
+									</tr>
+									</tbody>
+								</table>
+								<p class="ml40">* 연체발생 ~ 1개월분인 약정이자에 대한 연체이자와 대출원금에 대한 연체이자는 따로 계산됨.</p>
+							</li>
+							<li><strong>「원금을 상환하기로 약정한 날」에 상환하지 아니한 때</strong>
+								<ul class="finger">
+									<li>원금을 상환하여야 할 날의 다음날부터는 대출원금에 대한 연체이자를 납입하셔야 합니다.</li>
+								</ul>
+							</li>
+							<li><strong>「분할상환금(또는 분할상환 원리금)을 상환하기로 한 날」에 상환하지 아니한 때</strong>
+								<ul class="finger">
+									<li>분할상환금(또는 분할상환원리금)을 상환하여야 할 날의 다음날부터는 해당 분할상환금(또는 분할상환원리금)에 대한 연체이자를, 2회 이상 연속하여 지체한 때에는 대출원금잔액에 대한 연체이자를 납입하셔야 합니다.</li>
+								</ul>
+								<ul class="exam mb5">
+									<li>원금 3천만원, 분할상환 원리금 매월 250만원, 약정이자율 연 6%, 연체가산이자율 연 3%인 대출의 분할상환원리금을 미납하여 연체가 발생하고, 연체발생 후 2개월 시점에 납부할 경우 연체이자</li>
+								</ul>
+								<table class="customTable mb5 ml40">
+									<colgroup>
+										<col width="25%" /><col width="55%" /><col width="20%" />
+									</colgroup>
+									<thead>
+									<tr>
+										<th scope="row">연체기간</th><th scope="row">연체이자 계산방법</th><th scope="row">연체이자</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>연체발생 ~ 1개월분</td><td>지체된 분할상환 원리금(250만원) × 연9%(6%+3%) × 1/12</td><td>18,750원</td>
+									</tr>
+									<tr>
+										<td>연체 1개월 ~ 2개월분</td><td>원금(3천만원) × 연9%(6%+3%) × 1/12</td><td>225,000원</td>
+									</tr>
+									<tr>
+										<td>계</td><td></td><td>243,750원</td>
+									</tr>
+									</tbody>
+								</table>
+								<p class="ml40">* 지체된 분할상환 원리금에 대한 연체이자와 대출원금잔액에 대한 연체이자는 <span class="underline">따로 계산됨.</span></p>
+								<ul class="caution mt10">
+									<li>위 내용은 이해를 돕기 위해 원리금 분할상환 대출의 연체이자만을 월 단위로 단순하게 계산한 예시로, 연체이자는 대출조건, 대출종류 등에 따라 달라질 수 있으며, 실제 납부금액은 연체이자에 약정이자 및 분할상환 원리금을 포함하여 계산됩니다. </li>
+									<li>이자납입 연체로 인하여 대출잔액에 연체이율이 적용되었을 경우, 연체이자 전액을 납입하지 않고 일부연체이자를 납입하는 경우에도 연체이자 전액을 납입하기 전까지 대출잔액에 연체이율이 적용됨을 유의하시기 바랍니다.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header"><img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<h2 class="subTitle">7. 대출의 제한(거부)</h2>
+			<div class="box bluegray double-dense">
+				<ul class="square">
+					<li>
+						<p>카드사의 연체대출금 보유자, 카드사에 손해를 끼친 자, 불건전한 대출이 있는 자에 대해서 카드사는 대출을 취급(연장 및 대환 포함)하지 않거나 제한하여 운용할 수 있습니다.</p>
+						<div class="box bluegray double-dense">
+							<p class="mb0"><strong>(예시)</strong> 불건전대출이 있는 자의 범위</p>
+							<ol class="dense">
+								<li>카드사의 본인채무 또는 보증채무가 연체중인 자</li>
+								<li>특수채권의 채무자 및 연대보증인</li>
+								<li>신용회복지원, 회생절차, 파산·면책 등의 신청 또는 확정을 받은 자</li>
+								<li>종합신용정보집중기관의 신용도판단정보(기록보유자 포함)에 등록된 자<br/>
+									(다만, 공공정보에 등록된 자중 대출과 무관한 사유(예 : 세금체납)로 등록된 자는 제외)</li>
+								<li>기타 이에 준하는 자</li>
+							</ol>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle narrow">8. 대출기한 전 채무 상환이 필요한 경우</h2>
+			<div class="box bluegray double-dense">
+				<ul class="dia narrow mb5">
+					<li><p><strong>기한의 이익이란? </strong></p>기한의 존재로 말미암아 당사자가 받는 이익을 말하며, 카드사와의 대출거래에서 채무자인 고객은 당초 약정한 대출기한까지는 대출금을 상환하지 않아도 되므로 그 기간 동안 채무자인 <u>고객이 가지는 이익을 기한의 이익</u>이라 합니다.
+					</li>
+					<li><p><strong>기한의 이익이 상실되면?</strong></p>
+						모든 대출금(또는 해당 대출금)을 즉시 상환/ 연체이자 부담/ 일정기간 경과 후 신용도 판단정보 등록 등
+					</li>
+					<li><p><strong>주요 기한의 이익 상실 사유</strong></p>
+						<ul class="dash dense">
+							<li>대출거래와 관련하여 허위, 위변조 또는 고의로 부실자료를 제출하여 카드사의 채권보전에 중대한 손실을 유발한 때</li>
+							<li>이자 등을 지급하기로 할 때부터 1개월간 지체한 경우</li>
+							<li>분할상환금 또는 분할상환 원리금의 지급을 2회 이상 연속하여 지체한 경우</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="square narrow">
+					<li><p><strong><u>파산, 개인회생절차 개시의 신청이 있거나, 채무불이행자 명부 등재 신청이 있는 경우 등(신용카드 개인회원 표준약관 제29조 등에서 정한 사유)</u></strong></p>
+						<ul class="circle">
+							<li>카드사로부터 별도 청구가 없더라도 모든 대출금(또는 해당 대출금)을 대출기한이 도래하기 전임에도 불구하고 <u>즉시 상환</u>하셔야 합니다.</li>
+						</ul>
+					</li>
+					<li><p><strong><u>대출기한이 도래되었거나 기한이익이 상실된 대출을 하나라도 상환하지 아니한 때 등</u></strong></p>
+						<ul class="circle"><li>카드사의 서면청구에 의해 모든 대출금(또는 해당 대출금)을 대출기한이 도래하기 전임에도 불구하고 <u>즉시 상환</u>하셔야 합니다.</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle narrow">9. 연체정보 등의 등록</h2>
+			<div class="box bluegray double-dense">
+				<ul class="square narrow">
+					<li><p>대출원금, 이자 등을 3개월 이상 「장기연체」 한 경우 원금 또는 이자를 상환하기로 한 약정기일의 다음날로부터 3개월이 되는 날을 등록사유발생일로 하여, 그때로부터 7영업일 이내 '연체정보 등'이 등록됩니다. </p>
+						<ul class="circle dense">
+							<li>「일반신용정보관리규약」 개정 등으로 ‘연체정보 등’ 등록 기준이 변경될 수 있습니다. </li>
+							<li>‘연체정보 등’이 등록되면, 금융거래제약 등 불이익을 받을 수 있습니다.</li>
+						</ul>
+					</li>
+					<li><p><u>'연체기간이 5영업일 이상이고, 연체금 10만원 이상' 「단기연체」</u>한 경우 신용정보회사를 통해 연체정보가 등록되어 신용카드 사용정지 등 <u>금융거래가 제한</u>될 수 있습니다.</p></li>
+					<li><p>신용정보집중기관에 장기연체가 등록하는 경우에는 신용정보집중기관이 제3자에게 정보를 제공함으로써 신용정보주체가 불이익을 받을 수 있으며, 개인신용평점이 하락하고 금리가 상승하는 등의 영향이 발생할 수 있습니다.</p>
+						<div class="box dense">
+							<ul class="finger">
+								<li>
+									<p>아래의 신용정보들은 한국신용정보원 「일반신용정보관리규약」에 따라 종합신용정보집중기관인 한국신용정보원에 제공, 집중, 활용됩니다.</p>
+									<p>① 개인식별정보(성명, 주민등록번호 등), ② ‘연체정보 등’ 정보(연체사실 등), ③ 신용거래정보(대출, 보증현황 등)</p>
+								</li>
+							</ul>
+						</div>
+					</li><li><p>정보 등록 후 연체금을 상환하여도 신용점수가 일정기간 회복되지 아니할 수 있으며, <u>일정기간 동안 해당 기록이 보관</u>될 수 있습니다.  </p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header">
+			<img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div><div class="watermark"></div>
+		<div class="contentContainer">
+			<h2 class="subTitle">10. 신용점수에 미치는 영향</h2>
+			<div class="box bluegray dense">
+				<ul class="square dense">
+					<li><p class="mb0">신용공여(대출 등) 사실만으로 신용점수가 하락할 수 있으며, 평균적으로 연체율이 높은 금융권역(또는 형태)의 신용공여는 여타 금융권역 또는 일반적인 형태의 신용공여보다 <u>신용점수가 더 큰 폭으로 하락</u>할 수 있습니다.</p>
+						<ul class="circle"><li>해당 금융거래가 변제나 이에 준하는 방식으로 거래가 종료된 경우에도 일정기간 개인신용평점의 산정에 영향을 줄 수 있습니다.</li></ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle narrow">11. 채무조정 지원</h2>
+			<div class="box bluegray dense">
+				<ul class="square dense">
+					<li><p class="mb0">고객은 카드사가 정하는 요건에 부합되는 경우 채무조정을 신청할 수 있으며, 카드사는 내부심사를 통해 채무조정 지원 여부, 채무조정 방법(원리금 상환유예, 만기연장 등)을 결정·통지합니다.</p>
+						<ul class="circle"><li>구체적인 채무조정 신청방법 등은 카드사 고객센터 등으로 문의하여 주시기 바랍니다.</li></ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle narrow">12. 해지에 관한 사항</h2>
+			<div class="box bluegray dense">
+				<ul class="square narrow">
+					<li><p class="mb0">대출계약의 상환기간이 끝나기 전에 대출을 해지(상환)할 경우에는 카드사 영업점을 방문하여 직접 해지(상환)하거나 대출 결제계좌 또는 카드사가 부여하는 가상계좌에 해당 금액을 입금한 뒤 카드사에 해지(상환)의사를 표시하여 상환할 수 있습니다. </p>
+						<ul class="circle"><li>다만, <u>대출당일에 해지(상환)할 경우에는 1일의 정상이자가 부과</u>될 수 있습니다.</li></ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="subTitle narrow">13. 위법계약해지권</h2>
+			<div class="box bluegray dense">
+				<ul class="square narrow">
+					<li>
+						<p><strong>카드사가 아래와 같이 「금융소비자 보호에 관한 법률」(이하 “금융소비자보호법”)상 의무를 위반</strong>하여 대출계약을 체결한 경우, 고객은 해당 계약을 <strong>해지할 수 있습니다.</strong></p>
+						<ul class="circle dense">
+							<li>금융소비자보호법 제17조제3항을 위반하여 적합하지 아니하다고 인정되는 대출계약의 체결을 권유한 경우</li>
+							<li>금융소비자보호법 제19조제1항 또는 제3항을 위반하여 설명의무를 이행하지 아니한 경우</li>
+							<li>금융소비자보호법 제20조제1항을 위반하여 불공정영업행위를 한 경우</li>
+							<li>금융소비자보호법 제21조를 위반하여 부당권유행위를 한 경우</li>
+						</ul>
+					</li>
+					<li>
+						<p><u>위법계약 해지</u>를 요구하기 위해서는 아래의 날 중 먼저 도달한 기간 내에 <u>서면, 우편, 전자우편, 문자메시지 등으로 계약의 해지를 요구</u>하여야 하며, 이 경우에는 금융위원회가 고시하는 서식(계약해지요구서)에 위반사실을 입증하는 서류를 첨부하여 카드사에 제출하여야 합니다. </p>
+						<ul class="circle"><li>계약체결일로부터 5년 이내 또는 법 위반사실을 안 날로부터 1년 이내</li></ul>
+					</li>
+					<li>카드사는 해지를 요구받은 날부터 10일 이내에 고객에게 수락 여부를 통지하며, 거절 시에는 그 사유를 함께 통지합니다. </li>
+				</ul>
+			</div>
+			<h2 class="subTitle">14. 청약의 철회(대출계약철회권)</h2>
+			<div class="box bluegray dense">
+				<ul class="square narrow mb10">
+					<li><p>고객은 계약체결일 또는 계약서류를 제공받은 날(다만 금전·재화·용역의 지급이 늦게 이루어진 경우에는 그 지급일로 대체함)로부터 <u>‘14일 이내’ 계약에 대한 청약(대출계약)을 철회</u>할 수 있습니다. </p></li>
+					<li><p>청약(대출계약)의 철회 의사를 표시하기 위해서는 서면, 우편, 전자우편, 문자메시지 등으로 의사표시를 해야 하며, 이미 공급받은 금전과 그에 대한 이자(금전을 지급받은 날부터 금전을 돌려준 날까지의 기간에 대해 약정된 이자율과 공급받은 금전을 곱한 금액)를 반환하여야 합니다. <u>청약철회의 의사를 서면 등으로 발송한 때에는 그 발송 사실을 지체 없이 카드사에 알려주셔야 합니다.</u></p></li>
+					<li><p>청약(대출계약)철회권 행사 시에는 5영업일 이내에 해당 대출과 관련된 정보가 삭제됩니다. 아울러 <u>청약(대출계약)철회권의 효력이 발생한 이후에는 취소가 불가</u>하오니 참고하여 주시기 바랍니다.</p></li>
+				</ul>
+				<ul class="caution"><li><strong>동일한 카드사를 대상으로 최근 1개월 내에 2회 이상 대출계약을 철회하는 경우, 신규대출·만기연장 거절, 대출한도 축소, 금리우대 제한 등 불이익이 발생할 수 있습니다.</strong></li>
+				</ul>
+			</div>
 
-<div class="page style-isa">
-    <!-- page1 -->
-    <div class="subpage">
-        <h1 class="main-title">신탁형ISA 재산운용보고서</h1>
-
-        <div class="sub-title-container border-bottom-navy color-navy">
-            <h2 class="sub-title">1. 신탁계약 현황</h2>
-            <span class="unit" th:text="'(작성기준일 : ' + ${data23} + ')'">(작성기준일 : )</span>
-        </div>
-
-        <table class="noline-table">
-            <caption>기본정보</caption>
-            <colgroup>
-                <col width="25%" />
-                <col width="30%" />
-                <col width="30%" />
-                <col width="35%" />
-            </colgroup>
-            <tbody>
-            <tr>
-                <th scope="row">고객(위탁자)명</th>
-                <td th:text="${data24}"></td>
-                <th scope="row">계좌번호</th>
-                <td th:text="${data25}"></td>
-            </tr>
-            <tr>
-                <th scope="row">투자성향등급</th>
-                <td th:text="${data26}"></td>
-                <th scope="row">가입유형</th>
-                <td th:text="${data27}"></td>
-            </tr>
-            <tr>
-                <th scope="row">비과세한도(원)</th>
-                <td th:text="${data28}"></td>
-                <th scope="row">추가입금가능금액(원)</th>
-                <td th:text="${data29}"></td>
-            </tr>
-            <tr>
-                <th scope="row">가입일자</th>
-                <td th:text="${data30}"></td>
-                <th scope="row">만기일자<br/>(의무가입기간)</th>
-                <td th:text="${data31}"></td>
-            </tr>
-            <tr>
-                <th scope="row">신탁금액(원)<strong class="star">*</strong></th>
-                <td th:text="${data32}"></td>
-                <th scope="row">평가금액(원)</th>
-                <td th:text="${data33}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <p class="note mt10"><strong class="star">*</strong> 신탁금액=납입금액–인출금액</p>
-
-
-        <div class="sub-title-container border-bottom-navy color-navy">
-            <h2 class="sub-title">2. 연도별 납입(인출)현황</h2>
-        </div>
-        <table class="noline-table dense small-number">
-            <caption>연도별 납입(인출)현황</caption>
-            <colgroup>
-                <col width="10%" />
-                <col width="*" />
-                <col width="*" />
-                <col width="*" />
-                <col width="*" />
-                <col width="*" />
-                <col width="*" />
-                <col width="*" />
-            </colgroup>
-            <tbody>
-            <tr>
-                <th scope="row">구분</th>
-                <td class="text-center" th:text="${data34}"></td>
-                <td class="text-center" th:text="${data35}"></td>
-                <td class="text-center" th:text="${data36}"></td>
-                <td class="text-center" th:text="${data37}"></td>
-                <td class="text-center" th:text="${data38}"></td>
-                <td class="text-center" th:text="${data39}"></td>
-                <th class="color-navy text-center">합계</th>
-            </tr>
-            <tr>
-                <th scope="row">납입<br/>금액(원)</th>
-                <td class="text-right" th:text="${data40}"></td>
-                <td class="text-right" th:text="${data41}"></td>
-                <td class="text-right" th:text="${data42}"></td>
-                <td class="text-right" th:text="${data43}"></td>
-                <td class="text-right" th:text="${data44}"></td>
-                <td class="text-right" th:text="${data45}"></td>
-                <td class="text-right" th:text="${data46}"></td>
-            </tr>
-            <tr>
-                <th scope="row">인출<br/>금액(원)</th>
-                <td class="text-right" th:text="${data47}"></td>
-                <td class="text-right" th:text="${data48}"></td>
-                <td class="text-right" th:text="${data49}"></td>
-                <td class="text-right" th:text="${data50}"></td>
-                <td class="text-right" th:text="${data51}"></td>
-                <td class="text-right" th:text="${data52}"></td>
-                <td class="text-right" th:text="${data53}"></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="sub-title-container color-navy border-bottom-navy">
-            <h2 class="sub-title color-navy">3. 운용현황</h2>
-        </div>
-
-        <div class="sub-title-container color-navy mt0">
-            <h2 class="sub-title color-navy">가) ISA계좌 수익률 및 보수</h2>
-        </div>
-
-        <table class="noline-table td-right">
-            <caption>ISA계좌 수익률 및 보수</caption>
-            <colgroup>
-                <col width="19%" />
-                <col width="19%" />
-                <col width="19%" />
-                <col width="23%" />
-                <col width="20%" />
-            </colgroup>
-            <thead class="ud-border-navy">
-            <th scope="col">신탁금액(원)</th>
-            <th scope="col">평가금액(원)</th>
-            <th scope="col">평가손익(원)</th>
-            <th scope="col">신탁보수(원)<strong class="star">*</strong></th>
-            <th scope="col">수익률(%)<strong class="star">**</strong></th>
-            </thead>
-            <tbody>
-            <tr>
-                <td th:text="${data54}"></td>
-                <td th:text="${data55}"></td>
-                <td th:text="${data56}"></td>
-                <td th:text="${data57}"></td>
-                <td th:text="${data58}"></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <p class="note mt10 mb10">
-            <strong class="star">*</strong> 신탁보수 = 상품별 신탁원본평균잔액 x 상품별 보수율(연) x 신탁기간(일수) / 365 |
-            <br/>※ 가입시점부터 작성기준일까지 발생한 신탁보수이며, 신탁계약해지일에 일괄 수취예정<br/>
-        </p>
-        <p class="note">
-            <strong class="star">**</strong> 수익률 = (평가손익-신탁보수) / 신탁금액 x 100 |
-            <br/>※ 납입원금 전액을 인출한 경우 해당 수익률은 “-”로 표기 |<br/>
-            ※ 수익률은 신탁원본 대비 작성기준일 현재 평가증감에 따른 단순수익률(연환산수익률 아님)이며, 평가금액 및 수익률은 향후 운용성과에 따라 달라질 수 있음<br/>
-            ※ 중도인출 시 신탁금액 감소로 인하여 신탁원본 대비 수익률과 차이가 있을 수 있습니다.
-        </p>
-
-        <div class="sub-title-container color-navy">
-            <h2 class="sub-title">나) 상품유형별 운용현황</h2>
-            <span class="unit">(단위 : 원)</span>
-        </div>
-
-        <table class="noline-table td-right">
-            <caption>상품유형별 운용현황</caption>
-            <colgroup>
-                <col width="16%" />
-                <col width="21%" />
-                <col width="21%" />
-                <col width="21%" />
-                <col width="21%" />
-            </colgroup>
-            <thead class="ud-border-navy">
-            <th scope="col">상품구분</th>
-            <th scope="col">신탁원본(A)<strong class="star">*</strong></th>
-            <th scope="col">평가금액(B)</th>
-            <th scope="col">평가손익(B-A)</th>
-            <th scope="col">신탁보수</th>
-            </thead>
-            <tbody>
-            <tr class="u-border-navy">
-                <th scope="row">예·적금</th>
-                <td th:text="${data59}"></td>
-                <td th:text="${data60}"></td>
-                <td th:text="${data61}"></td>
-                <td th:text="${data62}"></td>
-            </tr>
-            <tr>
-                <th scope="row">수익증권</th>
-                <td th:text="${data63}"></td>
-                <td th:text="${data64}"></td>
-                <td th:text="${data65}"></td>
-                <td th:text="${data66}"></td>
-            </tr>
-            <tr>
-                <th scope="row">파생결합<br/>증권(ELS)</th>
-                <td th:text="${data67}"></td>
-                <td th:text="${data68}"></td>
-                <td th:text="${data69}"></td>
-                <td th:text="${data70}"></td>
-            </tr>
-            <tr>
-                <th scope="row">환매조건<br/>부채권(RP)</th>
-                <td th:text="${data71}"></td>
-                <td th:text="${data72}"></td>
-                <td th:text="${data73}"></td>
-                <td th:text="${data74}"></td>
-            </tr>
-            <tr>
-                <th scope="row">미운용<br/>자산(은대)</th>
-                <td th:text="${data75}"></td>
-                <td th:text="${data76}"></td>
-                <td th:text="${data77}"></td>
-                <td th:text="${data78}"></td>
-            </tr>
-            <tr>
-                <th scope="row">합계</th>
-                <td th:text="${data79}"></td>
-                <td th:text="${data80}"></td>
-                <td th:text="${data81}"></td>
-                <td th:text="${data82}"></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <p class="note mt10"><strong class="star">*</strong> 신탁원본은 재투자, 교체매매 등을 통해 발생한 이익이 포함된 금액으로 신탁금액과 상이할 수 있음</p>
-
-        <img class="mt30 logo-btm" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/logo-bottom.jpg" />
-
-        <p class="note mt0 border-top-gray">
-            <strong>| 안내말씀 | </strong>
-            재산운용보고서는 별도 통보를 요청하신 고객들에게 매분기별로 DM 또는 이메일을 통해 송부됩니다.
-            재산운용보고서 관련 문의는 거래 영업점이나, IBK고객센터(<a href="tel:02-1566-2566">1566-2566</a>, <a href="tel:02-1588-2588">1588-2588</a>)를 이용하여 주시기 바랍니다. ISA계좌의 수익률 조희는 인터넷/스마트뱅킹에서도 가능합니다.
-        </p>
-<!--        <img class="mt10" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/memo.jpg" />-->
-
-    </div>
+		</div>
+	</div>
+	<div class="subpage">
+		<div class="header"><img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/top.png" /><img class="logoImg" src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo.png" />
+		</div>
+		<div class="watermark"></div>
+		<div class="contentContainer">
+			<h2 class="subTitle">15. 민원 및 분쟁에 관한 사항</h2>
+			<div class="box bluegray"><ul class="square">
+				<li><p>동 상품과 관련하여 <strong>자세한 문의는 거래 영업점 또는 고객센터(☎1566-2566)로 문의</strong>주시기 바라오며, 상품가입 후 민원이 있을 경우 거래 영업점, 금융소비자지원부(☎080-800-0119) 또는 인터넷 홈페이지(<a href="https://www.ibk.co.kr/" target="_blank">www.ibk.co.kr</a>)에 문의할 수 있습니다.  영업점 등을 통해 은행에 접수된 민원은 특별한 사정이 없는 한 14영업일 이내에 처리함을 원칙으로 하되, 기한 연장시 이에 대해 안내드리도록 하겠습니다. 또한 요청이 있는 경우 민원처리진행상황을 안내받으실 수 있습니다. 또한 <strong>금융소비자는 본 상품에 대해여 당 은행과 분쟁이 있는 경우에는 금융소비자보호법 제36조 제1항에 따라 금융감독원(국번없이 ☎1332)에 분쟁조정을 신청</strong>할 수 있습니다.</p></li>
+				<li><p>IBK기업은행은 금품·향응을 받지 않습니다. 윤리경영 위반 사실이나  개선이 필요한 경우 신고해주시기 바랍니다.<br/>(☎02-729-7490, e-mail : <a href="email:ibkethics@ibk.co.kr">ibkethics@ibk.co.kr</a>)</p>
+				</li>
+			</ul>
+			</div>
+			<h2 class="subTitle">※ 고객의 이해여부 확인</h2>
+			<div class="box bluegray">
+				<ul class="square"><li><strong>대출원리금을 연체</strong>할 경우, <strong>원리금에 연체이자율이 적용</strong>되고 <strong>금융거래가 제약</strong>되며 <strong>신용점수 등이 하락</strong>하는 <strong>불이익이 발생</strong>할 수 있습니다.</li>
+					<li><strong>동일한 카드사를 대상</strong>으로 최근 <strong>1개월 내에 2회 이상 대출계약을 철회</strong>하는 경우, <strong>신규대출 거절, 대출한도 축소, 금리우대 제한 등의 불이익</strong>이 발생할 수 있습니다.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="infoContainer">
+				<div class="box gray fs15">
+					본인은 중소기업은행과 대출거래를 함에 있어 은행 직원과 상담하여 본 설명서를 <strong>교부</strong>받았으며, 위에서 설명한 내용을 포함하여 대출거래의 주요내용 및 고객부담비용에 대하여 충분히 <strong>설명</strong>을 듣고 <strong>이해</strong>하였음을 확인합니다.
+					<hr class="divide"/>
+					본인은 은행 직원으로부터 <strong>금리인하요구권, 청약(대출계약)철회권, 위법계약해지권 등 고객의 권리</strong>에 대하여 충분히 <strong>설명</strong>을 듣고 <strong>이해</strong>하였음을 확인합니다.
+					<hr class="divide"/>
+					<p class="text-right"><span class="underline" th:text="${data12 + ',     ' + data13 + ',     ' + data14}"></span></p>
+				</div>
+			</div>
+			<div class="con">
+				<div class="logoGray"><img src="https://kr.object.gov-ncloudstorage.com/secsms-resources/assets/logo_gray.png"/></div>
+				<div class="info">
+					IBK고객센터 : 1566-2566, 1588-2588 (해외 82-31-888-8000)<br/>우)100-758 서울 중구 을지로 79 사업자등록번호 : 202-81-00978<br/>Copyright ⓒ ibk(Industrial Bank of Korea) All rights reserved <a href="http://www.ibk.co.kr">http://www.ibk.co.kr</a>
+				</div><div class="float-clear"></div>
+			</div>
+		</div>
+	</div>
 </div>
+<script>
+	let a = 1;
+	let textChk = document.getElementById('change').textContent.substring(2, 3);
+	// 금리적용방식 1. 변동, 2.고정, 3.혼합
+	if(textChk == '1'){
+		document.getElementById('fix').className = "";
+		document.getElementById('mix').className = "";
+	}
+	else if(textChk == '2'){
+		document.getElementById('change').className = "";
+		document.getElementById('mix').className = "";
+	}else{
+		document.getElementById('change').className = "";
+		document.getElementById('fix').className = "";
+	}
+
+	document.getElementById('change').textContent = '변동';
+
+	textChk = document.getElementById('target').textContent.substring(2, 3);
+	// 중도상환수수료 부과여부 및 요율 Y : 대상, N : 비대상
+	if(textChk == 'Y'){
+		document.getElementById('ntarget').className = "";
+	}else{
+		document.getElementById('target').className = "";
+	}
+
+	document.getElementById('target').textContent = '대상';
+
+	textChk = document.getElementById('eRpay').textContent.substring(9, 10);
+	// 상환방식 1. 원금균등상환, 2. 거치후 원금균등분할상환, 3. 원리금균등상환
+	if(textChk == '1'){
+		document.getElementById('eRpay').className = "";
+		document.getElementById('eDpay').className = "";
+	}else if(textChk == '2'){
+		document.getElementById('eRpay').className = "";
+		document.getElementById('eApay').className = "";
+	}else{
+		document.getElementById('eApay').className = "";
+		document.getElementById('eDpay').className = "";
+	}
+
+	document.getElementById('eRpay').textContent = '원리금균등분할상환';
+
+	textChk = document.getElementById('yTar').textContent.substring(2, 3);
+	// 금리인하요구권 대상여부 Y : 대상, N : 비대상
+	if(textChk == 'Y'){
+		document.getElementById('nTar').className = "";
+	}else{
+		document.getElementById('yTar').className = "";
+	}
+
+	document.getElementById('yTar').textContent = '대상';
+
+</script>
 </body>
 </html>
