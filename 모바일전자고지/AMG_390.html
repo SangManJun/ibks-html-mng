@@ -1,0 +1,247 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>신탁형ISA 재산운용보고서</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/common.css"/>
+</head>
+
+
+<body class="bgcolor-white">
+
+<header class="header-isa">
+    <img class="header-line" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/bg-line.jpg" />
+    <img class="logo-isa " src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/logo-isa.jpg" />
+</header>
+
+<div class="page style-isa">
+    <!-- page1 -->
+    <div class="subpage">
+        <h1 class="main-title">신탁형ISA 재산운용보고서</h1>
+
+        <div class="sub-title-container border-bottom-navy color-navy">
+            <h2 class="sub-title">1. 신탁계약 현황</h2>
+            <span class="unit" th:text="'(작성기준일 : ' + ${data23} + ')'">(작성기준일 : )</span>
+        </div>
+
+        <table class="noline-table">
+            <caption>기본정보</caption>
+            <colgroup>
+                <col width="25%" />
+                <col width="30%" />
+                <col width="30%" />
+                <col width="35%" />
+            </colgroup>
+            <tbody>
+            <tr>
+                <th scope="row">고객(위탁자)명</th>
+                <td th:text="${data24}"></td>
+                <th scope="row">계좌번호</th>
+                <td th:text="${data25}"></td>
+            </tr>
+            <tr>
+                <th scope="row">투자성향등급</th>
+                <td th:text="${data26}"></td>
+                <th scope="row">가입유형</th>
+                <td th:text="${data27}"></td>
+            </tr>
+            <tr>
+                <th scope="row">비과세한도(원)</th>
+                <td th:text="${data28}"></td>
+                <th scope="row">추가입금가능금액(원)</th>
+                <td th:text="${data29}"></td>
+            </tr>
+            <tr>
+                <th scope="row">가입일자</th>
+                <td th:text="${data30}"></td>
+                <th scope="row">만기일자<br/>(의무가입기간)</th>
+                <td th:text="${data31}"></td>
+            </tr>
+            <tr>
+                <th scope="row">신탁금액(원)<strong class="star">*</strong></th>
+                <td th:text="${data32}"></td>
+                <th scope="row">평가금액(원)</th>
+                <td th:text="${data33}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="note mt10"><strong class="star">*</strong> 신탁금액=납입금액–인출금액</p>
+
+
+        <div class="sub-title-container border-bottom-navy color-navy">
+            <h2 class="sub-title">2. 연도별 납입(인출)현황</h2>
+        </div>
+        <table class="noline-table dense small-number">
+            <caption>연도별 납입(인출)현황</caption>
+            <colgroup>
+                <col width="10%" />
+                <col width="*" />
+                <col width="*" />
+                <col width="*" />
+                <col width="*" />
+                <col width="*" />
+                <col width="*" />
+                <col width="*" />
+            </colgroup>
+            <tbody>
+            <tr>
+                <th scope="row">구분</th>
+                <td class="text-center" th:text="${data34}"></td>
+                <td class="text-center" th:text="${data35}"></td>
+                <td class="text-center" th:text="${data36}"></td>
+                <td class="text-center" th:text="${data37}"></td>
+                <td class="text-center" th:text="${data38}"></td>
+                <td class="text-center" th:text="${data39}"></td>
+                <th class="color-navy text-center">합계</th>
+            </tr>
+            <tr>
+                <th scope="row">납입<br/>금액(원)</th>
+                <td class="text-right" th:text="${data40}"></td>
+                <td class="text-right" th:text="${data41}"></td>
+                <td class="text-right" th:text="${data42}"></td>
+                <td class="text-right" th:text="${data43}"></td>
+                <td class="text-right" th:text="${data44}"></td>
+                <td class="text-right" th:text="${data45}"></td>
+                <td class="text-right" th:text="${data46}"></td>
+            </tr>
+            <tr>
+                <th scope="row">인출<br/>금액(원)</th>
+                <td class="text-right" th:text="${data47}"></td>
+                <td class="text-right" th:text="${data48}"></td>
+                <td class="text-right" th:text="${data49}"></td>
+                <td class="text-right" th:text="${data50}"></td>
+                <td class="text-right" th:text="${data51}"></td>
+                <td class="text-right" th:text="${data52}"></td>
+                <td class="text-right" th:text="${data53}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="sub-title-container color-navy border-bottom-navy">
+            <h2 class="sub-title color-navy">3. 운용현황</h2>
+        </div>
+
+        <div class="sub-title-container color-navy mt0">
+            <h2 class="sub-title color-navy">가) ISA계좌 수익률 및 보수</h2>
+        </div>
+
+        <table class="noline-table td-right">
+            <caption>ISA계좌 수익률 및 보수</caption>
+            <colgroup>
+                <col width="19%" />
+                <col width="19%" />
+                <col width="19%" />
+                <col width="23%" />
+                <col width="20%" />
+            </colgroup>
+            <thead class="ud-border-navy">
+            <th scope="col">신탁금액(원)</th>
+            <th scope="col">평가금액(원)</th>
+            <th scope="col">평가손익(원)</th>
+            <th scope="col">신탁보수(원)<strong class="star">*</strong></th>
+            <th scope="col">수익률(%)<strong class="star">**</strong></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${data54}"></td>
+                <td th:text="${data55}"></td>
+                <td th:text="${data56}"></td>
+                <td th:text="${data57}"></td>
+                <td th:text="${data58}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p class="note mt10 mb10">
+            <strong class="star">*</strong> 신탁보수 = 상품별 신탁원본평균잔액 x 상품별 보수율(연) x 신탁기간(일수) / 365 |
+            <br/>※ 가입시점부터 작성기준일까지 발생한 신탁보수이며, 신탁계약해지일에 일괄 수취예정<br/>
+        </p>
+        <p class="note">
+            <strong class="star">**</strong> 수익률 = (평가손익-신탁보수) / 신탁금액 x 100 |
+            <br/>※ 납입원금 전액을 인출한 경우 해당 수익률은 “-”로 표기 |<br/>
+            ※ 수익률은 신탁원본 대비 작성기준일 현재 평가증감에 따른 단순수익률(연환산수익률 아님)이며, 평가금액 및 수익률은 향후 운용성과에 따라 달라질 수 있음<br/>
+            ※ 중도인출 시 신탁금액 감소로 인하여 신탁원본 대비 수익률과 차이가 있을 수 있습니다.
+        </p>
+
+        <div class="sub-title-container color-navy">
+            <h2 class="sub-title">나) 상품유형별 운용현황</h2>
+            <span class="unit">(단위 : 원)</span>
+        </div>
+
+        <table class="noline-table td-right">
+            <caption>상품유형별 운용현황</caption>
+            <colgroup>
+                <col width="16%" />
+                <col width="21%" />
+                <col width="21%" />
+                <col width="21%" />
+                <col width="21%" />
+            </colgroup>
+            <thead class="ud-border-navy">
+            <th scope="col">상품구분</th>
+            <th scope="col">신탁원본(A)<strong class="star">*</strong></th>
+            <th scope="col">평가금액(B)</th>
+            <th scope="col">평가손익(B-A)</th>
+            <th scope="col">신탁보수</th>
+            </thead>
+            <tbody>
+            <tr class="u-border-navy">
+                <th scope="row">예·적금</th>
+                <td th:text="${data59}"></td>
+                <td th:text="${data60}"></td>
+                <td th:text="${data61}"></td>
+                <td th:text="${data62}"></td>
+            </tr>
+            <tr>
+                <th scope="row">수익증권</th>
+                <td th:text="${data63}"></td>
+                <td th:text="${data64}"></td>
+                <td th:text="${data65}"></td>
+                <td th:text="${data66}"></td>
+            </tr>
+            <tr>
+                <th scope="row">파생결합<br/>증권(ELS)</th>
+                <td th:text="${data67}"></td>
+                <td th:text="${data68}"></td>
+                <td th:text="${data69}"></td>
+                <td th:text="${data70}"></td>
+            </tr>
+            <tr>
+                <th scope="row">환매조건<br/>부채권(RP)</th>
+                <td th:text="${data71}"></td>
+                <td th:text="${data72}"></td>
+                <td th:text="${data73}"></td>
+                <td th:text="${data74}"></td>
+            </tr>
+            <tr>
+                <th scope="row">미운용<br/>자산(은대)</th>
+                <td th:text="${data75}"></td>
+                <td th:text="${data76}"></td>
+                <td th:text="${data77}"></td>
+                <td th:text="${data78}"></td>
+            </tr>
+            <tr>
+                <th scope="row">합계</th>
+                <td th:text="${data79}"></td>
+                <td th:text="${data80}"></td>
+                <td th:text="${data81}"></td>
+                <td th:text="${data82}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p class="note mt10"><strong class="star">*</strong> 신탁원본은 재투자, 교체매매 등을 통해 발생한 이익이 포함된 금액으로 신탁금액과 상이할 수 있음</p>
+
+        <img class="mt30 logo-btm" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/logo-bottom.jpg" />
+
+        <p class="note mt0 border-top-gray">
+            <strong>| 안내말씀 | </strong>
+            재산운용보고서는 별도 통보를 요청하신 고객들에게 매분기별로 DM 또는 이메일을 통해 송부됩니다.
+            재산운용보고서 관련 문의는 거래 영업점이나, IBK고객센터(<a href="tel:02-1566-2566">1566-2566</a>, <a href="tel:02-1588-2588">1588-2588</a>)를 이용하여 주시기 바랍니다. ISA계좌의 수익률 조희는 인터넷/스마트뱅킹에서도 가능합니다.
+        </p>
+<!--        <img class="mt10" src="https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/assets/AMG/390/memo.jpg" />-->
+
+    </div>
+</div>
+</body>
+</html>
